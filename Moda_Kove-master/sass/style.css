@@ -1,0 +1,57 @@
+.gfonts {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: white;
+}
+
+body .header {
+  background-color: rgba(173, 245, 173, 0.809);
+}
+
+body .main {
+  background-color: white;
+}
+
+body .main__titulo {
+  text-align: center;
+  padding: 1rem;
+}
+
+body .main__somos {
+  text-align: center;
+  padding: 1rem;
+}
+
+body .main .imagen-producto-carrito {
+  max-width: 80px;
+  border-radius: 20px;
+}
+
+body .main .carrito-compras-productos {
+  padding: 20px 0px;
+}
+
+body .footer {
+  background-color: rgba(173, 245, 173, 0.809);
+  margin-top: 3rem;
+}
+
+body .footer div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .footer div .footer__alumno {
+  padding-left: 5px;
+}
+
+body .footer div .footer__comision {
+  padding-right: 5px;
+}
+/*# sourceMappingURL=style.css.map */
