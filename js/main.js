@@ -53,139 +53,97 @@ btn1.onclick = () => {
 
 }
 
-// Agrego un buscador de productos en la pagína implementando EVENTOS y DOM
+// Agrego un buscador de productos en la pagina implementando EVENTOS y DOM
 
 const btn2 = document.getElementById("buscadorBoton")
 
 btn2.addEventListener("click", () => {
 
     const input = document.getElementById("entrada")
-    let productoBuscado = input.value
-    console.log(productoBuscado);
+    const productoBuscado = input.value
     const buscadorContainer = document.querySelector(".buscador-productos")
 
-    if (productoBuscado == "Remera" || productoBuscado == "remera"){
+    listaDeProductos.forEach( () => {
 
-        let contenedor = document.createElement("div")
-        let contenido =
-        `<h3>El producto que usted busco es:</h3> 
-        <p>El producto es ${listaDeProductos[0].producto} y su precio es: $${listaDeProductos[0].precio}.</p>`
-        contenedor.innerHTML = contenido
-        buscadorContainer.append(contenedor)
+        const resultado = listaDeProductos.find((el) => el.producto == productoBuscado)
 
-    } else if (productoBuscado == "Pantalon" || productoBuscado == "pantalon") {
-
-        let contenedor = document.createElement("div")
-        let contenido =
-        `<h3>El producto que usted busco es:</h3> 
-        <p>El producto es ${listaDeProductos[1].producto} y su precio es: $${listaDeProductos[1].precio}.</p>`
-        contenedor.innerHTML = contenido
-        buscadorContainer.append(contenedor)
-
-    } else if (productoBuscado == "Zapatillas" || productoBuscado == "zapatillas") {
-
-        let contenedor = document.createElement("div")
-        let contenido = 
-        `<h3>El producto que usted busco es:</h3> 
-        <p>El producto es ${listaDeProductos[2].producto} y su precio es: $${listaDeProductos[2].precio}.</p>`
-        contenedor.innerHTML = contenido
-        buscadorContainer.append(contenedor)
-
-    } else if (productoBuscado == "Gorra" || productoBuscado == "gorra") {
-
-        let contenedor = document.createElement("div")
-        let contenido =  
-        `<h3>El producto que usted busco es:</h3> 
-        <p>El producto es ${listaDeProductos[3].producto} y su precio es: $${listaDeProductos[3].precio}.</p>`
-        contenedor.innerHTML = contenido
-        buscadorContainer.append(contenedor)
-
-    } else if (productoBuscado == "Campera" || productoBuscado == "campera") {
-
-        let contenedor = document.createElement("div")
-        let contenido = 
-        `<h3>El producto que usted busco es:</h3> 
-        <p>El producto es ${listaDeProductos[4].producto} y su precio es: $${listaDeProductos[4].precio}.</p>`
-        contenedor.innerHTML = contenido
-        buscadorContainer.append(contenedor)
-
-    } else {
-
-        let contenedor = document.createElement("div")
-        let contenido =  
-        `<h4>El producto que busca no se encuentra disponible.</h4>`
-        contenedor.innerHTML = contenido
-        buscadorContainer.append(contenedor)
-
-    }
+        if (resultado == true) {
+            let contenedor = document.createElement("div")
+            let contenido = 
+            `<h3>El producto que usted busco es:</h3> 
+            <p>El producto es ${listaDeProductos[el].producto} y su precio es: $${listaDeProductos[el].precio}.</p>`
+            contenedor.innerHTML = contenido
+            buscadorContainer.append(contenedor)
+        };
+    })   
 })
 
-// Implemento un carrito de compra
+// Agrego un buscador de productos en la pagína implementando EVENTOS y DOM
 
-const botonesAgregarCarrito = document.querySelectorAll(".btn-comprar")
+// const btn2 = document.getElementById("buscadorBoton")
 
-botonesAgregarCarrito.forEach((agregarCarrito) => {
+// btn2.addEventListener("click", () => {
 
-    agregarCarrito.addEventListener("click", botonCarritoClick);
+//     const input = document.getElementById("entrada")
+//     let productoBuscado = input.value
+//     console.log(productoBuscado);
+//     const buscadorContainer = document.querySelector(".buscador-productos")
 
-})
+//     if (productoBuscado == "Remera" || productoBuscado == "remera"){
 
-const carritoItemsContainer = document.querySelector(".carrito-compra-container")
+//         let contenedor = document.createElement("div")
+//         let contenido =
+//         `<h3>El producto que usted busco es:</h3> 
+//         <p>El producto es ${listaDeProductos[0].producto} y su precio es: $$     {listaDeProductos[0].precio}.</p>`
+//         contenedor.innerHTML = contenido
+//         buscadorContainer.append(contenedor)
 
-console.log(carritoItemsContainer);
+//     } else if (productoBuscado == "Pantalon" || productoBuscado == "pantalon") {
 
-function botonCarritoClick(event) {
-    const boton = event.target
-    // Capturo el <div> que contiene todo mi producto
-    const producto = boton.closest(".card")
-    //Capturo los items de mi producto del HTML
-    const nombreProducto = producto.querySelector(".card-title").textContent
-    const precioProducto = producto.querySelector(".precio-producto").textContent
-    const imagenProducto = producto.querySelector(".imagen-producto").src
-    
-    agregarItemsCarrito(nombreProducto, precioProducto, imagenProducto);
+//         let contenedor = document.createElement("div")
+//         let contenido =
+//         `<h3>El producto que usted busco es:</h3> 
+//         <p>El producto es ${listaDeProductos[1].producto} y su precio es: $${listaDeProductos[1].precio}.</p>`
+//         contenedor.innerHTML = contenido
+//         buscadorContainer.append(contenedor)
 
-}
+//     } else if (productoBuscado == "Zapatillas" || productoBuscado == "zapatillas") {
 
-function agregarItemsCarrito(nombreProducto, precioProducto, imagenProducto) {
-    const carritoLista = document.createElement("div")
-    const carritoContenido = 
-    `<div class="row">
-        <div class="col-6">
-            <div class="d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-                <img src='${imagenProducto}' class="imagen-producto-carrito">
-                <h6 class=" text-truncate ml-3 mb-0">${nombreProducto}</h6>
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-                <p class="mb-0">${precioProducto}</p>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
-                <input class="" type="number" value="1">
-                <button class="btn btn-danger" type="button">X</button>
-            </div>
-        </div>
-    </div>`;
-    Toastify({
-        text: "Producto agregado al carrito",
-        duration: 3000,
-        destination: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
-        },
-        onClick: function(){} // Callback after click
-      }).showToast();
-    carritoLista.innerHTML = carritoContenido
-    carritoItemsContainer.append(carritoLista)
-}
+//         let contenedor = document.createElement("div")
+//         let contenido = 
+//         `<h3>El producto que usted busco es:</h3> 
+//         <p>El producto es ${listaDeProductos[2].producto} y su precio es: $${listaDeProductos[2].precio}.</p>`
+//         contenedor.innerHTML = contenido
+//         buscadorContainer.append(contenedor)
+
+//     } else if (productoBuscado == "Gorra" || productoBuscado == "gorra") {
+
+//         let contenedor = document.createElement("div")
+//         let contenido =  
+//         `<h3>El producto que usted busco es:</h3> 
+//         <p>El producto es ${listaDeProductos[3].producto} y su precio es: $${listaDeProductos[3].precio}.</p>`
+//         contenedor.innerHTML = contenido
+//         buscadorContainer.append(contenedor)
+
+//     } else if (productoBuscado == "Campera" || productoBuscado == "campera") {
+
+//         let contenedor = document.createElement("div")
+//         let contenido = 
+//         `<h3>El producto que usted busco es:</h3> 
+//         <p>El producto es ${listaDeProductos[4].producto} y su precio es: $${listaDeProductos[4].precio}.</p>`
+//         contenedor.innerHTML = contenido
+//         buscadorContainer.append(contenedor)
+
+//     } else {
+
+//         let contenedor = document.createElement("div")
+//         let contenido =  
+//         `<h4>El producto que busca no se encuentra disponible.</h4>`
+//         contenedor.innerHTML = contenido
+//         buscadorContainer.append(contenedor)
+
+//     }
+// })
 
 // Aplico localStorage para almacenar los productos ahí
 
